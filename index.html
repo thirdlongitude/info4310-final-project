@@ -13,7 +13,24 @@
 
 <body>
   <h1>title here</h1>
+
+  <div id="sentiment">
+    <!-- svg for sentiment line chart -->
+    <svg id="linechart"></svg>
+  </div>
+  <div id="char-relations">
+    <!-- svg for sankey diagram -->
+    <svg id="sankey" height="850" width="850"></svg>
+  </div>
+
   <script>
+    const svg_linechart = d3.select("#linechart");
+    const svg_sankey = d3.select("#sankey");
+
+    const requestData = async function () {
+      // const data = await d3.csv("processed.csv");
+    }
+    requestData();
   </script>
 </body>
 
