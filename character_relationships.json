@@ -1,0 +1,234 @@
+{
+  "nodes": [
+    {
+      "name": "Elizabeth Bennet",
+      "weight": 2.9200905937674633
+    },
+    {
+      "name": "Jane Bennet",
+      "weight": 1.7224572649722836
+    },
+    {
+      "name": "George Wickham",
+      "weight": 1.013538136924232
+    },
+    {
+      "name": "Mr. Darcy",
+      "weight": 1.8566453016633764
+    },
+    {
+      "name": "Mr. Bingley",
+      "weight": 1.6223255751622958
+    },
+    {
+      "name": "Charlotte Lucas",
+      "weight": 1.6222425220578358
+    },
+    {
+      "name": "Lady Catherine",
+      "weight": 1.4711870304868562
+    },
+    {
+      "name": "Mr. Collins",
+      "weight": 1.8846850433284348
+    }
+  ],
+  "edges": [
+    {
+      "source": "Elizabeth Bennet",
+      "target": "Jane Bennet",
+      "weight": 0.4616875010133437,
+      "source_index": 0,
+      "target_index": 1
+    },
+    {
+      "source": "Elizabeth Bennet",
+      "target": "George Wickham",
+      "weight": 0.28372231633101197,
+      "source_index": 0,
+      "target_index": 2
+    },
+    {
+      "source": "Elizabeth Bennet",
+      "target": "Mr. Darcy",
+      "weight": 0.5145498208228836,
+      "source_index": 0,
+      "target_index": 3
+    },
+    {
+      "source": "Elizabeth Bennet",
+      "target": "Mr. Bingley",
+      "weight": 0.44290587999197273,
+      "source_index": 0,
+      "target_index": 4
+    },
+    {
+      "source": "Elizabeth Bennet",
+      "target": "Charlotte Lucas",
+      "weight": 0.42037794777520804,
+      "source_index": 0,
+      "target_index": 5
+    },
+    {
+      "source": "Elizabeth Bennet",
+      "target": "Lady Catherine",
+      "weight": 0.35564435564435565,
+      "source_index": 0,
+      "target_index": 6
+    },
+    {
+      "source": "Elizabeth Bennet",
+      "target": "Mr. Collins",
+      "weight": 0.44120277218868764,
+      "source_index": 0,
+      "target_index": 7
+    },
+    {
+      "source": "Jane Bennet",
+      "target": "George Wickham",
+      "weight": 0.18290994951962222,
+      "source_index": 1,
+      "target_index": 2
+    },
+    {
+      "source": "Jane Bennet",
+      "target": "Mr. Darcy",
+      "weight": 0.2794891993863759,
+      "source_index": 1,
+      "target_index": 3
+    },
+    {
+      "source": "Jane Bennet",
+      "target": "Mr. Bingley",
+      "weight": 0.44415507106183494,
+      "source_index": 1,
+      "target_index": 4
+    },
+    {
+      "source": "Jane Bennet",
+      "target": "Charlotte Lucas",
+      "weight": 0.1489148837925196,
+      "source_index": 1,
+      "target_index": 5
+    },
+    {
+      "source": "Jane Bennet",
+      "target": "Lady Catherine",
+      "weight": 0.0532987611639297,
+      "source_index": 1,
+      "target_index": 6
+    },
+    {
+      "source": "Jane Bennet",
+      "target": "Mr. Collins",
+      "weight": 0.15200189903465738,
+      "source_index": 1,
+      "target_index": 7
+    },
+    {
+      "source": "George Wickham",
+      "target": "Mr. Darcy",
+      "weight": 0.27518851275469275,
+      "source_index": 2,
+      "target_index": 3
+    },
+    {
+      "source": "George Wickham",
+      "target": "Mr. Bingley",
+      "weight": 0.0847730108455706,
+      "source_index": 2,
+      "target_index": 4
+    },
+    {
+      "source": "George Wickham",
+      "target": "Charlotte Lucas",
+      "weight": 0.024568195354377605,
+      "source_index": 2,
+      "target_index": 5
+    },
+    {
+      "source": "George Wickham",
+      "target": "Lady Catherine",
+      "weight": 0.06939799331103678,
+      "source_index": 2,
+      "target_index": 6
+    },
+    {
+      "source": "George Wickham",
+      "target": "Mr. Collins",
+      "weight": 0.09297815880791999,
+      "source_index": 2,
+      "target_index": 7
+    },
+    {
+      "source": "Mr. Darcy",
+      "target": "Mr. Bingley",
+      "weight": 0.4034236699982894,
+      "source_index": 3,
+      "target_index": 4
+    },
+    {
+      "source": "Mr. Darcy",
+      "target": "Charlotte Lucas",
+      "weight": 0.1377950765809028,
+      "source_index": 3,
+      "target_index": 5
+    },
+    {
+      "source": "Mr. Darcy",
+      "target": "Lady Catherine",
+      "weight": 0.16151007663922795,
+      "source_index": 3,
+      "target_index": 6
+    },
+    {
+      "source": "Mr. Darcy",
+      "target": "Mr. Collins",
+      "weight": 0.08468894548100411,
+      "source_index": 3,
+      "target_index": 7
+    },
+    {
+      "source": "Mr. Bingley",
+      "target": "Charlotte Lucas",
+      "weight": 0.06781275514832623,
+      "source_index": 4,
+      "target_index": 5
+    },
+    {
+      "source": "Mr. Bingley",
+      "target": "Lady Catherine",
+      "weight": 0.06121582611648837,
+      "source_index": 4,
+      "target_index": 6
+    },
+    {
+      "source": "Mr. Bingley",
+      "target": "Mr. Collins",
+      "weight": 0.11803936199981345,
+      "source_index": 4,
+      "target_index": 7
+    },
+    {
+      "source": "Charlotte Lucas",
+      "target": "Lady Catherine",
+      "weight": 0.2985598876009835,
+      "source_index": 5,
+      "target_index": 6
+    },
+    {
+      "source": "Charlotte Lucas",
+      "target": "Mr. Collins",
+      "weight": 0.5242137758055181,
+      "source_index": 5,
+      "target_index": 7
+    },
+    {
+      "source": "Lady Catherine",
+      "target": "Mr. Collins",
+      "weight": 0.4715601300108342,
+      "source_index": 6,
+      "target_index": 7
+    }
+  ]
+}
