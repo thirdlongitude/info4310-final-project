@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        html {
+            padding: 0px;
+            margin: 0px;
+            background-color: rgb(235, 232, 226);
+            font-family: monospace;
+            text-align: center;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 3px;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .text-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-container">
+        <h1>Pride and Prejudice: Character Emotions</h1>
+        <p>
+            We have
+            created a bubble chart to illustrate the emotions of the main characters over time, with the main events on
+            the x-axis and the intensity of their emotions on the y-axis. The size of the bubbles represents the
+            intensity of the characters' emotions.
+        </p>
+        <select id="eventType">
+            <option value="all">All Events</option>
+            <option value="social">Social Gatherings</option>
+            <option value="confrontation">Confrontations</option>
+            <option value="romantic">Romantic Moments</option>
+        </select>
+
+    </div>
+    
+
+    <script>
+        const margin = { top: 20, right: 20, bottom: 100, left: 50 },
+            width = 800 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+        const x = d3.scalePoint().range([0, width]).padding(0.5);
+        const y = d3.scaleLinear().range([height, 0]);
+
+        const xAxis = d3.axisBottom(x);
+        const yAxis = d3.axisLeft(y);
+
+        function wrap(text, width) {
+                text.each(function () {
+                    var text = d3.select(this),
+                        words = text.text().split(/\s+/).reverse(),
+                        word,
+                        line = [],
+                        lineNumber = 0,
+                        lineHeight = 1.1, // ems
+                        y = text.attr("y"),
+                        dy = parseFloat(text.attr("dy")),
+                        tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+                    while (word = words.pop()) {
+                        line.push(word);
+                        tspan.text(line.join(" "));
+                        if (tspan.node().getComputedTextLength() > width) {
+                            line.pop();
+                            tspan.text(line.join(" "));
+                            line = [word];
+                            tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+                        }
+                    }
+                });
+        }
+
+
+        const svg = d3
+            .select("body")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const tooltip = d3
+            .select("body")
+            .append("div")
+            .attr("class", "tooltip");
+
+        const eventTypeDropdown = d3.select("#eventType");
+
+        const colorScale = d3.scaleOrdinal()
+            .domain(["Elizabeth", "Darcy", "Jane", "Bingley"])
+            .range(["#8294C4", "#19A7CE", "#F2B6A0", "#617A55"]);
+
+        d3.csv("character_score.csv").then((data) => {
+            const events = Array.from(new Set(data.map(d => d.main_event)));
+            x.domain(events);
+            y.domain([0, 10]);
+
+            svg
+                .append("g")
+                .attr("class", "x axis")
+                .attr("transform", `translate(0,${height})`)
+                .call(xAxis)
+                .selectAll("text")
+                .attr("y", 10) // Adjust vertical position of the text below the x-axis
+                .attr("x", 0)
+                .attr("dy", ".35em")
+                .attr("transform", "rotate(0)")
+                .style("text-anchor", "middle")
+                .call(wrap, 50); // Adjust the second argument to change the maximum width of the label text.
+
+
+
+            svg.append("g").attr("class", "y axis").call(yAxis);
+      
+
+                svg.selectAll(".circle")
+                    .data(data)
+                    .enter()
+                    .append("circle")
+                    .attr("class", "circle")
+                    .attr("cx", (d) => x(d.main_event))
+                    .attr("cy", (d) => y(+d.intensity_score))
+                    .attr("r", (d) => Math.sqrt(d.intensity_score) * 3)
+                    .attr("fill", (d) => colorScale(d.character))
+                    .on("mouseover", function (event, d) {
+                        tooltip
+                            .style("opacity", 1)
+                            .html(
+                                `Character: ${d.character}<br>Event: ${d.main_event}<br>Intensity Score: ${d.intensity_score}`
+                            )
+                            .style("left", `${event.pageX + 10}px`)
+                            .style("top", `${event.pageY + 10}px`);
+                    })
+                    .on("mouseout", function () {
+                        tooltip.style("opacity", 0);
+                    });
+
+                // Legend
+                const legend = svg.selectAll(".legend")
+                    .data(colorScale.domain())
+                    .enter().append("g")
+                    .attr("class", "legend")
+                    .attr("transform", function (d, i) {
+                        return "translate(0," + i * 20 + ")";
+                    });
+
+                legend.append("rect")
+                    .attr("x", width - 18)
+                    .attr("width", 18)
+                    .attr("height", 18)
+                    .style("fill", colorScale);
+
+                legend.append("text")
+                    .attr("x", width - 24)
+                    .attr("y", 9)
+                    .attr("dy", ".35em")
+                    .style("text-anchor", "end")
+                    .text(function (d) { return d; });
+
+                eventTypeDropdown.on("change", function () {
+                const selectedEventType = this.value;
+
+                svg
+                    .selectAll(".circle")
+                    .style("display", function (d) {
+                        // Show all bubbles if the selected event type is 'all'
+                        if (selectedEventType === "all") {
+                            return "block";
+                        }
+
+                        // Show only the bubbles with the same event type as the selected one
+                        return d.event_type === selectedEventType ? "block" : "none";
+                    });
+            });
+        });
+
+            </script>
+    </body>
+    
+    </html>

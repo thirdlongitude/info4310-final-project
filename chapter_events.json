@@ -1,0 +1,38 @@
+[
+    {
+        "chapter": 1,
+        "event": "The Bennet family discusses Mr. Bingley's arrival at Netherfield Park."
+    },
+    {
+        "chapter": 2,
+        "event": "The Meryton Assembly where the Bennet family and other locals first meet Mr. Bingley and Mr. Darcy."
+    },
+    {
+        "chapter": 4,
+        "event": "Mr. Collins proposes to Elizabeth, but she refuses."
+    },
+    {
+        "chapter": 6,
+        "event": "The Netherfield Ball takes place, where Elizabeth and Darcy dance together."
+    },
+    {
+        "chapter": 14,
+        "event": "Mr. Darcy proposes to Elizabeth for the first time, but she rejects him."
+    },
+    {
+        "chapter": 19,
+        "event": "Elizabeth visits Pemberley, Darcy's estate, and begins to appreciate his character."
+    },
+    {
+        "chapter": 50,
+        "event": "Lydia elopes with Mr. Wickham, causing scandal and distress in the Bennet family."
+    },
+    {
+        "chapter": 58,
+        "event": "Mr. Darcy proposes to Elizabeth for the second time, and she accepts."
+    },
+    {
+        "chapter": 60,
+        "event": "The novel concludes with the marriages of Elizabeth and Darcy, and Jane and Bingley."
+    }
+]
