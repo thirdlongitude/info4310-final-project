@@ -1,14 +1,18 @@
 character,main_event,intensity_score,event_type
-Elizabeth,Introduction,5,social
 Elizabeth,First encounter with Darcy,3,social
 Elizabeth,Receives a letter from Darcy,8,confrontation
 Elizabeth,Visits Pemberley,9,confrontation
 Elizabeth,Receives the news of Lydia's elopement,2,romantic
 Elizabeth,Engagement to Darcy,10,romantic
-Darcy,Introduction,5,romantic
 Darcy,First encounter with Elizabeth,4,romantic
-Darcy,Proposes to Elizabeth,8,social
 Darcy,Writes a letter to Elizabeth,7,social
 Darcy,Meets Elizabeth at Pemberley,9,romantic
+Darcy,Receives the news of Lydia's elopement,2,romantic
+Jane,First encounter with Bingley,4,romantic
+Jane,Receives a letter from Caroline Bingley,6,social
+Jane,Receives the news of Lydia's elopement,2,romantic
+Bingley,First encounter with Jane,4,romantic
+Bingley,Receives the news of Lydia's elopement,2,romantic
+
 
 
