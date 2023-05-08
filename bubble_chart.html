@@ -148,7 +148,7 @@
                     .attr("class", "circle")
                     .attr("cx", (d) => x(d.main_event))
                     .attr("cy", (d) => y(+d.intensity_score))
-                    .attr("r", (d) => Math.sqrt(d.intensity_score) * 3)
+                    .attr("r", (d) => Math.sqrt(d.intensity_score) * 6)
                     .attr("fill", (d) => colorScale(d.character))
                     .on("mouseover", function (event, d) {
                         tooltip

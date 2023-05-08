@@ -3,31 +3,32 @@ Elizabeth,The Beginning,2,social
 Darcy,The Beginning,3,social
 Jane,The Beginning,3,social
 Bingley,The Beginning,3,social
-Elizabeth,Stay at Netherfield,5,social
-Darcy,Stay at Netherfield,4,social
+Elizabeth,Meryton Ball,3,social
+Darcy,Meryton Ball,2,social
+Jane,Meryton Ball,6,social
+Bingley,Meryton Ball,6,social
+Elizabeth,Stay at Netherfield,3,social
+Darcy,Stay at Netherfield,3,social
 Jane,Stay at Netherfield,6,social
 Bingley,Stay at Netherfield,5,social
+Elizabeth,Mr. Collins' Proposal,5,confrontation
 Elizabeth,Netherfield Ball,6,social
 Darcy,Netherfield Ball,5,social
 Jane,Netherfield Ball,7,social
-Bingley,Netherfield Ball,6,social
-Elizabeth,See Mr. Darcy in Kent,7,romantic
-Darcy,See Elizabeth in Kent,6,romantic
-Jane,News from Kent,4,social
-Bingley,News from Kent,3,social
-Elizabeth,Read Mr. Darcy's Letter,8,confrontation
-Darcy,Write letter to Elizabeth,7,confrontation
-Jane,Learn about Mr. Darcy's Letter,5,social
-Bingley,Learn about Mr. Darcy's Letter,4,social
+Bingley,Netherfield Ball,7,social
+Elizabeth,See Mr. Darcy in Kent,5,romantic
+Elizabeth,Mr. Darcy's Proposal,8,romantic
+Darcy,Mr. Darcy's Proposal,7,romantic
+Elizabeth,Mr. Darcy's Letter,8,confrontation
 Elizabeth,A Visit to Derbyshire,9,romantic
-Darcy,Meet Elizabeth at Derbyshire,9,romantic
-Jane,News from Derbyshire,6,social
-Bingley,News from Derbyshire,5,social
+Darcy,A Visit to Derbyshire,9,romantic
+Elizabeth,Lydia's Run Away,8,confrontation
+Darcy,Lydia's Run Away,6,confrontation
 Elizabeth,Finds Out That Mr. Darcy Saved Lydia,10,romantic
-Darcy,Help Lydia and Wickham,8,confrontation
-Jane,Learn about Lydia's Rescue,8,social
-Bingley,Learn about Lydia's Rescue,7,social
+Elizabeth,Mr. Bingley's Proposal,7,romantic
+Darcy,Mr. Bingley's Proposal,6,social
+Jane,Mr. Bingley's Proposal,10,romantic
+Bingley,Mr. Bingley's Proposal,9,romantic
 Elizabeth,Lady Catherine Visits,7,confrontation
-Darcy,Hear about Lady Catherine's Visit,6,confrontation
-Jane,Lady Catherine's Visit,4,social
-Bingley,Lady Catherine's Visit,3,social
+Elizabeth,A New Declaration of Love,10,romantic
+Darcy,A New Declaration of Love,9,romantic
