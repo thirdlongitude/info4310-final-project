@@ -6,7 +6,35 @@
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     html {
+      padding: 0px;
+      margin: 0px;
+      background-color: rgb(235, 232, 226);
       font-family: monospace;
+      text-align: center;
+    }
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    .tooltip {
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 3px;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .text-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: left;
     }
   </style>
 </head>
@@ -14,27 +42,219 @@
 <body>
   <h1>title here</h1>
 
-  <div id="sentiment">
-    <!-- svg for sentiment line chart -->
-    <svg id="linechart"></svg>
-  </div>
+  <div id="sentiment"></div>
   <div id="char-relations">
     <!-- svg for chord diagram -->
     <svg id="chord" height="850" width="850"></svg>
   </div>
+  <div id="combined-bubble"></div>
 
   <script>
-    const svg_linechart = d3.select("#linechart");
+    // constants line chart
+    const line_chart_margins = { top: 20, right: 20, bottom: 30, left: 50 },
+      line_chart_width = 660 - line_chart_margins.left - line_chart_margins.right,
+      line_chart_height = 500 - line_chart_margins.top - line_chart_margins.bottom;
+
+    const line_x = d3.scaleLinear().range([0, line_chart_width]);
+    const line_y = d3.scaleLinear().range([line_chart_height, 0]);
+
+    const line_xAxis = d3.axisBottom(line_x);
+    const line_yAxis = d3.axisLeft(line_y);
+
+    const line = d3.line()
+      .x((d) => line_x(d.chapter))
+      .y((d) => line_y(d.sentiment_score));
+
+    const line_chart_svg = d3.select("#sentiment")
+      .append("svg")
+      .attr("width", line_chart_width + line_chart_margins.left + line_chart_margins.right)
+      .attr("height", line_chart_height + line_chart_margins.top + line_chart_margins.bottom)
+      .append("g")
+      .attr("transform", `translate(${line_chart_margins.left},${line_chart_margins.top})`);
+
+    const line_tooltip = d3.select("#sentiment")
+      .append("div")
+      .attr("class", "tooltip");
+
+    const line_legendWidth = 20;
+    const line_legendHeight = 200;
+
+    const line_legend_svg = d3.select("#sentiment")
+      .append("svg")
+      .attr("width", line_legendWidth)
+      .attr("height", line_legendHeight);
+
+    const line_legend = line_legend_svg
+      .append("g")
+      .attr("class", "legend")
+      .attr("transform", "translate(0, 10)");
+
+    // constants chord diagram
     const chord_chart_width = d3.select("#chord").attr("width");
     const chord_chart_height = d3.select("#chord").attr("height");
     const chord_diagram = d3.select("#chord").append("g");
 
+    // constants bubble chart
+    const bubble_margins = { top: 20, right: 20, bottom: 100, left: 50 },
+      bubble_width = 800 - bubble_margins.left - bubble_margins.right,
+      bubble_height = 500 - bubble_margins.top - bubble_margins.bottom;
+
+    const bubble_x = d3.scalePoint().range([0, bubble_width]).padding(0.5);
+    const bubble_y = d3.scaleLinear().range([bubble_height, 0]);
+
+    const bubble_xAxis = d3.axisBottom(bubble_x);
+    const bubble_yAxis = d3.axisLeft(bubble_y);
+
+    function wrap(text, width) {
+      text.each(function () {
+        var text = d3.select(this),
+          words = text.text().split(/\s+/).reverse(),
+          word,
+          line = [],
+          lineNumber = 0,
+          lineHeight = 1.1, // ems
+          y = text.attr("y"),
+          dy = parseFloat(text.attr("dy")),
+          tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+        while (word = words.pop()) {
+          line.push(word);
+          tspan.text(line.join(" "));
+          if (tspan.node().getComputedTextLength() > width) {
+            line.pop();
+            tspan.text(line.join(" "));
+            line = [word];
+            tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+          }
+        }
+      });
+    }
+
+    const bubble_svg = d3.select("#combined-bubble")
+      .append("svg")
+      .attr("width", bubble_width + bubble_margins.left + bubble_margins.right)
+      .attr("height", bubble_height + bubble_margins.top + bubble_margins.bottom)
+      .append("g")
+      .attr("transform", `translate(${bubble_margins.left},${bubble_margins.top})`);
+
+    const bubble_tooltip = d3.select("body")
+      .append("div")
+      .attr("class", "tooltip");
+
+    const bubble_eventTypeDropdown = d3.select("#eventType");
+
+    const bubble_characters = ["Elizabeth", "Darcy", "Jane", "Bingley"];
+
+    const bubble_colorScale = d3.scaleOrdinal()
+      .domain(bubble_characters)
+      .range(["#8294C4", "#19A7CE", "#F2B6A0", "#617A55"]);
+
     const requestData = async function () {
       // ----- load data -----
+      const chapter_events = await d3.json("chapter_events.json");
+      const sentiment = await d3.csv("sentiment_per_chapter.csv");
+      console.log(sentiment);
       const char_relations = await d3.json("character_relationships.json");
       console.log(char_relations);
+      const char_scores = await d3.csv("character_score.csv");
+      console.log(char_scores);
 
-      // ----- chord diagram -----
+      // ----- start line chart -----
+      const line_colorScale = d3.scaleLinear()
+        .domain([0.05, 0.45])
+        .range(["blue", "red"]);
+
+      line_chart_svg.append("rect")
+        .attr("width", line_chart_width)
+        .attr("height", line_chart_height)
+        .attr("fill", "url(#sentimentGradient)");
+
+      const sentimentGradient = line_chart_svg.append("defs")
+        .append("linearGradient")
+        .attr("id", "sentimentGradient")
+        .attr("x1", "0%")
+        .attr("y1", "0%")
+        .attr("x2", "0%")
+        .attr("y2", "100%");
+
+      sentimentGradient.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#E06469")
+        .attr("stop-opacity", 1);
+
+      sentimentGradient.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#E3F2C1")
+        .attr("stop-opacity", 1);
+
+      line_x.domain(d3.extent(sentiment, (d) => +d.chapter));
+      line_y.domain(d3.extent(sentiment, (d) => +d.sentiment_score));
+
+      line_chart_svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", `translate(0,${line_chart_height})`)
+        .call(line_xAxis);
+
+      line_chart_svg.append("g").attr("class", "y axis").call(line_yAxis);
+
+      line_chart_svg.append("path")
+        .datum(sentiment)
+        .attr("class", "line")
+        .attr("d", line)
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 1.5);
+
+      const localExtrema = sentiment.filter((d, i, arr) => {
+        if (i === 0 || i === arr.length - 1) return false;
+        const prev = +arr[i - 1].sentiment_score;
+        const curr = +d.sentiment_score;
+        const next = +arr[i + 1].sentiment_score;
+        return (curr > prev && curr > next) || (curr < prev && curr < next);
+      });
+
+      line_chart_svg.selectAll(".circle")
+        .data(localExtrema)
+        .enter()
+        .append("circle")
+        .attr("class", "circle")
+        .attr("cx", (d) => line_x(+d.chapter))
+        .attr("cy", (d) => line_y(+d.sentiment_score))
+        .attr("r", 3)
+        .attr("fill", "#617A55")
+        .on("mouseover", function (event, d) {
+          const eventText = chapter_events.find((e) => e.chapter === +d.chapter)?.event || "";
+          line_tooltip
+            .style("opacity", 1)
+            .html(
+              `Chapter: ${d.chapter}<br>Sentiment Score: ${d.sentiment_score}<br>Event: ${eventText}`
+            )
+            .style("left", `${event.pageX + 10}px`)
+            .style("top", `${event.pageY + 10}px`);
+        })
+        .on("mouseout", function () {
+          line_tooltip.style("opacity", 0);
+        });
+
+      line_legend
+        .append("rect")
+        .attr("width", line_legendWidth)
+        .attr("height", line_legendHeight - 20)
+        .style("fill", "url(#sentimentGradient)");
+
+      const line_legendScale = d3.scaleLinear()
+        .range([line_legendHeight - 20, 0])
+        .domain([0.05, 0.45]);
+
+      const line_legendAxis = d3.axisRight(line_legendScale).ticks(5);
+
+      line_legend
+        .append("g")
+        .attr("class", "axis")
+        .attr("transform", `translate(${line_legendWidth}, 0)`)
+        .call(line_legendAxis);
+      // ----- end line chart -----
+
+      // ----- start chord diagram -----
       // colors generated by http://vrl.cs.brown.edu/color
       const chord_colors = ['#399283', '#6ceac0', '#3337a6', '#a2e84f',
         '#20502e', '#9acfd8', '#19477d', '#b4a1e2'];
@@ -125,6 +345,90 @@
         .attr("transform", d => d.transform)
         .text(d => chord_nodes[d.index].name)
         .attr("text-anchor", d => d.anchor);
+
+      // TODO: make interactive
+      // ----- end chord diagram -----
+
+      // ----- start bubble chart -----
+      const events = Array.from(new Set(char_scores.map(d => d.main_event)));
+      bubble_x.domain(events);
+      bubble_y.domain([0, 10]);
+
+      bubble_svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", `translate(0,${bubble_height})`)
+        .call(bubble_xAxis)
+        .selectAll("text")
+        .attr("y", function (d, i) {
+          return i % 2 === 0 ? 10 : -40;
+        }) // Adjust vertical position of the text
+        .attr("x", 0)
+        .attr("dy", ".35em")
+        .attr("transform", "rotate(0)")
+        .style("text-anchor", "middle")
+        .call(wrap, 50);
+
+      bubble_svg.append("g").attr("class", "y axis").call(bubble_yAxis);
+
+      bubble_svg.selectAll(".circle")
+        .data(char_scores)
+        .enter()
+        .append("circle")
+        .attr("class", "circle")
+        .attr("cx", (d) => bubble_x(d.main_event))
+        .attr("cy", (d) => bubble_y(+d.intensity_score))
+        .attr("r", (d) => Math.sqrt(d.intensity_score) * 3)
+        .attr("fill", (d) => bubble_colorScale(d.character))
+        .on("mouseover", function (event, d) {
+          bubble_tooltip
+            .style("opacity", 1)
+            .html(
+              `Character: ${d.character}<br>Event: ${d.main_event}<br>Intensity Score: ${d.intensity_score}`
+            )
+            .style("left", `${event.pageX + 10}px`)
+            .style("top", `${event.pageY + 10}px`);
+        })
+        .on("mouseout", function () {
+          bubble_tooltip.style("opacity", 0);
+        });
+
+      const bubble_legend = bubble_svg.selectAll(".legend")
+        .data(bubble_characters)
+        .enter()
+        .append("g")
+        .attr("class", "legend")
+        .attr("transform", function (d, i) {
+          return "translate(0," + i * 20 + ")";
+        });
+
+      bubble_legend.append("rect")
+        .attr("x", bubble_width - 18)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", bubble_colorScale);
+
+      bubble_legend.append("text")
+        .attr("x", bubble_width - 24)
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .text(function (d) { return d; });
+
+      bubble_eventTypeDropdown.on("change", function () {
+        const bubble_selectedEventType = this.value;
+
+        bubble_svg.selectAll(".circle")
+          .style("display", function (d) {
+            // show all bubbles if the selected event type is 'all'
+            if (bubble_selectedEventType === "all") {
+              return "block";
+            }
+
+            // show only the bubbles with the same event type as the selected one
+            return d.event_type === bubble_selectedEventType ? "block" : "none";
+          });
+      });
+      // ----- end bubble chart -----
     }
     requestData();
   </script>
