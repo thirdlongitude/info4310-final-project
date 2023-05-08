@@ -1,18 +1,33 @@
 character,main_event,intensity_score,event_type
-Elizabeth,First encounter with Darcy,3,social
-Elizabeth,Receives a letter from Darcy,8,confrontation
-Elizabeth,Visits Pemberley,9,confrontation
-Elizabeth,Receives the news of Lydia's elopement,2,romantic
-Elizabeth,Engagement to Darcy,10,romantic
-Darcy,First encounter with Elizabeth,4,romantic
-Darcy,Writes a letter to Elizabeth,7,social
-Darcy,Meets Elizabeth at Pemberley,9,romantic
-Darcy,Receives the news of Lydia's elopement,2,romantic
-Jane,First encounter with Bingley,4,romantic
-Jane,Receives a letter from Caroline Bingley,6,social
-Jane,Receives the news of Lydia's elopement,2,romantic
-Bingley,First encounter with Jane,4,romantic
-Bingley,Receives the news of Lydia's elopement,2,romantic
-
-
-
+Elizabeth,The Beginning,2,social
+Darcy,The Beginning,3,social
+Jane,The Beginning,3,social
+Bingley,The Beginning,3,social
+Elizabeth,Stay at Netherfield,5,social
+Darcy,Stay at Netherfield,4,social
+Jane,Stay at Netherfield,6,social
+Bingley,Stay at Netherfield,5,social
+Elizabeth,Netherfield Ball,6,social
+Darcy,Netherfield Ball,5,social
+Jane,Netherfield Ball,7,social
+Bingley,Netherfield Ball,6,social
+Elizabeth,See Mr. Darcy in Kent,7,romantic
+Darcy,See Elizabeth in Kent,6,romantic
+Jane,News from Kent,4,social
+Bingley,News from Kent,3,social
+Elizabeth,Read Mr. Darcy's Letter,8,confrontation
+Darcy,Write letter to Elizabeth,7,confrontation
+Jane,Learn about Mr. Darcy's Letter,5,social
+Bingley,Learn about Mr. Darcy's Letter,4,social
+Elizabeth,A Visit to Derbyshire,9,romantic
+Darcy,Meet Elizabeth at Derbyshire,9,romantic
+Jane,News from Derbyshire,6,social
+Bingley,News from Derbyshire,5,social
+Elizabeth,Finds Out That Mr. Darcy Saved Lydia,10,romantic
+Darcy,Help Lydia and Wickham,8,confrontation
+Jane,Learn about Lydia's Rescue,8,social
+Bingley,Learn about Lydia's Rescue,7,social
+Elizabeth,Lady Catherine Visits,7,confrontation
+Darcy,Hear about Lady Catherine's Visit,6,confrontation
+Jane,Lady Catherine's Visit,4,social
+Bingley,Lady Catherine's Visit,3,social

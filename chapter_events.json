@@ -1,38 +1,38 @@
 [
     {
-        "chapter": 1,
+        "chapter": 2,
         "event": "The Bennet family discusses Mr. Bingley's arrival at Netherfield Park."
     },
     {
-        "chapter": 2,
+        "chapter": 4,
         "event": "The Meryton Assembly where the Bennet family and other locals first meet Mr. Bingley and Mr. Darcy."
     },
     {
-        "chapter": 4,
-        "event": "Mr. Collins proposes to Elizabeth, but she refuses."
+        "chapter": 5,
+        "event": "the families discuss Mr. Darcy's behavior. Charlotte explains his pride might be due to his wealth."
     },
     {
         "chapter": 6,
-        "event": "The Netherfield Ball takes place, where Elizabeth and Darcy dance together."
+        "event": "Jane's suitability for Bingley is discussed. Elizabeth talks with Darcy."
+    },
+    {
+        "chapter": 7,
+        "event": "During Jane's visit to Bingley's house, she falls ill in the rain. Elizabeth visits Jane and meets Mr. Bingley. Darcy shows interest in Elizabeth"
+    },
+    {
+        "chapter": 10,
+        "event": "Elizabeth visits Netherfield to see Jane and is caught in a rainstorm. She is forced to stay overnight."
+    },
+    {
+        "chapter": 11,
+        "event": "Jane's health improves and Bingley shows interest in her. Elizabeth argues with Darcy, exchanging insults about their personalities."
     },
     {
         "chapter": 14,
-        "event": "Mr. Darcy proposes to Elizabeth for the first time, but she rejects him."
+        "event": "Mr. Collins visits the Bennet family "
     },
     {
-        "chapter": 19,
-        "event": "Elizabeth visits Pemberley, Darcy's estate, and begins to appreciate his character."
-    },
-    {
-        "chapter": 50,
-        "event": "Lydia elopes with Mr. Wickham, causing scandal and distress in the Bennet family."
-    },
-    {
-        "chapter": 58,
-        "event": "Mr. Darcy proposes to Elizabeth for the second time, and she accepts."
-    },
-    {
-        "chapter": 60,
-        "event": "The novel concludes with the marriages of Elizabeth and Darcy, and Jane and Bingley."
+        "chapter": 17,
+        "event": "Mr. Collins asks Elizabeth to reserve dances."
     }
 ]
