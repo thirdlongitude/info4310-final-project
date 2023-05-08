@@ -7,10 +7,14 @@
   <style>
     html {
       padding: 0px;
-      margin: 0px;
+      margin: 0px 10%;
       background-color: rgb(235, 232, 226);
       font-family: monospace;
       text-align: center;
+    }
+
+    p {
+      font-size: larger;
     }
 
     .axis path,
@@ -40,13 +44,44 @@
 </head>
 
 <body>
-  <h1>title here</h1>
+  <h1>Pride and Prejudice: A Sentiment Analysis</h1>
+
+  <h2>Sentiment by Chapter</h2>
+
+  <p>Lorem ipsum dolor sit amet. Quo tempora autem cum provident debitis eum saepe dolore et necessitatibus voluptatem
+    et quos fuga qui cupiditate enim! Et repellendus voluptas ut voluptatem incidunt aut velit nemo et amet minus qui
+    assumenda voluptatibus aut voluptas itaque ex numquam facere. Ut odit laboriosam est voluptas magni ut molestiae
+    optio quo sequi necessitatibus quo dolor eveniet cum aperiam iusto qui dolore maiores. Aut autem quibusdam qui minus
+    assumenda qui ratione consequatur qui velit consequatur.
+  </p>
 
   <div id="sentiment"></div>
+
+  <h2>Character Relationships</h2>
+
+  <p>
+    Lorem ipsum dolor sit amet. Quo tempora autem cum provident debitis eum saepe dolore et necessitatibus voluptatem et
+    quos fuga qui cupiditate enim! Et repellendus voluptas ut voluptatem incidunt aut velit nemo et amet minus qui
+    assumenda voluptatibus aut voluptas itaque ex numquam facere. Ut odit laboriosam est voluptas magni ut molestiae
+    optio quo sequi necessitatibus quo dolor eveniet cum aperiam iusto qui dolore maiores. Aut autem quibusdam qui minus
+    assumenda qui ratione consequatur qui velit consequatur.
+  </p>
+
   <div id="char-relations">
     <!-- svg for chord diagram -->
     <svg id="chord" height="850" width="850"></svg>
   </div>
+
+  <h2>Intensity of Character Emotions Over Time</h2>
+
+  <p>
+    Lorem ipsum dolor sit amet. Quo tempora autem cum provident debitis eum saepe dolore et necessitatibus voluptatem
+    et quos fuga qui cupiditate enim! Et repellendus voluptas ut voluptatem incidunt aut velit nemo et amet minus qui
+    assumenda voluptatibus aut voluptas itaque ex numquam facere. Ut odit laboriosam est voluptas magni ut molestiae
+    optio quo sequi necessitatibus quo dolor eveniet cum aperiam iusto qui dolore maiores. Aut autem quibusdam qui minus
+    assumenda qui ratione consequatur qui velit consequatur.
+  </p>
+
   <div id="combined-bubble"></div>
 
   <script>
@@ -235,8 +270,7 @@
           line_tooltip.style("opacity", 0);
         });
 
-      line_legend
-        .append("rect")
+      line_legend.append("rect")
         .attr("width", line_legendWidth)
         .attr("height", line_legendHeight - 20)
         .style("fill", "url(#sentimentGradient)");
@@ -247,8 +281,7 @@
 
       const line_legendAxis = d3.axisRight(line_legendScale).ticks(5);
 
-      line_legend
-        .append("g")
+      line_legend.append("g")
         .attr("class", "axis")
         .attr("transform", `translate(${line_legendWidth}, 0)`)
         .call(line_legendAxis);
