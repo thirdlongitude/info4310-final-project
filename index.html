@@ -379,11 +379,70 @@
         .text(d => chord_nodes[d.index].name)
         .attr("text-anchor", d => d.anchor);
 
-      // TODO: make interactive
+      // ribbon color gradients
+      // function to generate gradient IDs
+      function gradientID(chord) {
+        return `ribbon-gradient-${chord.source.index}-${chord.target.index}`;
+      }
+
+      let chord_gradients = d3.select("#chord").append("defs")
+        .selectAll("linearGradient")
+        .data(chords)
+        .join("linearGradient")
+        .attr("id", gradientID)
+        .attr("gradientUnits", "userSpaceOnUse")
+        .attr("x1", d => chord_radius * Math.cos((d.source.endAngle - d.source.startAngle) / 2 + d.source.startAngle - Math.PI / 2))
+        .attr("y1", d => chord_radius * Math.sin((d.source.endAngle - d.source.startAngle) / 2 + d.source.startAngle - Math.PI / 2))
+        .attr("x2", d => chord_radius * Math.cos((d.target.endAngle - d.target.startAngle) / 2 + d.target.startAngle - Math.PI / 2))
+        .attr("y2", d => chord_radius * Math.sin((d.target.endAngle - d.target.startAngle) / 2 + d.target.startAngle - Math.PI / 2))
+
+      chord_gradients.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", d => chord_color_scale(chord_nodes[d.source.index]));
+      chord_gradients.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", d => chord_color_scale(chord_nodes[d.target.index]));
+
+      ribbons.attr("fill", d => "url(#" + gradientID(d) + ")");
+      // interactivity
+      // functions to highlight all and hide all
+      function fullOpacity() {
+        rings.attr("opacity", 1);
+        ribbons.attr("opacity", 1);
+      }
+
+      function dimOpacity() {
+        rings.attr("opacity", 0.2);
+        ribbons.attr("opacity", 0.2);
+      }
+
+      // functions to show rings and ribbons on mouseovers
+      function highlightRings(index) {
+        let targetSegments = rings.filter(d => {
+          return chord_connections[d.index].includes(index);
+        });
+        targetSegments.attr("opacity", 1);
+      }
+
+      function highlightRibbons(index) {
+        let targetRibbons = ribbons.filter(d => {
+          return d.source.index === index || d.target.index === index;
+        });
+        targetRibbons.attr("opacity", 1);
+      }
+
+      // on mouseover
+      rings.on("mouseout", fullOpacity)
+        .on("mouseover", function (event, d) {
+          dimOpacity();
+          highlightRings(d.index);
+          highlightRibbons(d.index);
+        });
       // ----- end chord diagram -----
 
       // ----- start bubble chart -----
       const events = Array.from(new Set(char_scores.map(d => d.main_event)));
+      console.log(events);
       bubble_x.domain(events);
       bubble_y.domain([0, 10]);
 
