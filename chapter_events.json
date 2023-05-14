@@ -34,5 +34,124 @@
     {
         "chapter": 17,
         "event": "Mr. Collins asks Elizabeth to reserve dances."
+    },
+    {
+        "chapter": 19,
+        "event": "Mr. Collins proposes to Elizabeth, who refuses him."
+    },
+    {
+        "chapter": 20,
+        "event": "Mrs. Bennet tries to recruit Charlotte to change Elizabeth's mind"
+    },
+    {
+        "chapter": 22,
+        "event": "Mr. Collins proposes to Charlotte Lucas, who accepts him."
+    },
+    {
+        "chapter": 23,
+        "event": "Mr. Lucas announces to the rest of the Bennet family his daughter's engagement to Mr. Collins. Mrs. Bennet becomes agitated"
+    },
+    {
+        "chapter": 26,
+        "event":" Jane accepts Bingley's disinterest"
+    },
+    {
+        "chapter": 27,
+        "event": "Elizabeth agrees to travel to Hunsford to visit her friend Charlotte and Mr. Collins."
+    },
+    {
+        "chapter": 28,
+        "event": "Elizabeth was going to visit Charlotte"
+    },
+    {
+        "chapter": 29,
+        "event": "Mr. Collins diligently prepares his houseguests for the visit to Rosings"
+    },
+    {
+        "chapter": 30,
+        "event": "Mr. Darcy, along with his cousin Colonel Fitzwilliam, will be visiting Rosings."
+    },
+    {
+        "chapter": 31,
+        "event": "Elizabeth and Darcy meet again at Rosings. Darcy is polite but distant."
+    },
+    {
+        "chapter": 32,
+        "event": "The following day, Darcy visits the Collins home. Only Elizabeth is at home"
+    },
+    {
+        "chapter": 34,
+        "event": "Mr. Darcy's proposal to Elizabeth and Elizabeth rejects Darcy's proposal"
+    },
+    {
+        "chapter": 35,
+        "event": "Mr. Darcy's letter to Elizabeth for explanation of his actions"
+    },
+    {
+        "chapter": 36,
+        "event": "Elizabeth reads the letter from Mr. Darcy"
+    },
+    {
+        "chapter":38,
+        "event": "Elizabeth comes to London to visit the Gardiners"
+    },
+    {
+        "chapter":40,
+        "event": "Elizabeth finally decides to tell Jane what happened during her visit to Hunsford"
+    },
+    {
+        "chapter":44,
+        "event": "Elizabeth comes to London to visit the Gardiners"
+    },
+    {
+        "chapter":45,
+        "event": "criticism of Elizabeth's family"
+    },
+    {
+        "chapter":47,
+        "event": ""
+    },
+    {
+        "chapter":48,
+        "event": ""
+    },
+    {
+        "chapter":50,
+        "event": ""
+    },
+    {
+        "chapter":51,
+        "event": ""
+    },
+    {
+        "chapter":52,
+        "event": ""
+    },
+    {
+        "chapter":53,
+        "event": ""
+    },
+    {
+        "chapter":54,
+        "event": "Bingley and Darcy come to dine at the Bennets' home"
+    },
+    {
+        "chapter":56,
+        "event": "Lady Catherine pays an unexpected visit to Longbourn"
+    },
+    {
+        "chapter":57,
+        "event": ""
+    },
+    {
+        "chapter":58,
+        "event": ""
+    },
+    {
+        "chapter":60,
+        "event": "Elizabeth and Darcy explore their feelings for each other"
     }
+   
+
+    
 ]
