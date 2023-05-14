@@ -1,0 +1,48 @@
+character,main_event,intensity_score,event_type
+Elizabeth,The Beginning,0.63,social
+Jane,The Beginning,0.61,social
+Bingley,The Beginning,0.82,social
+Elizabeth,Meryton Ball,0.01,social
+Jane,Meryton Ball,0.04,social
+Darcy,Meryton Ball,0.24,social
+Bingley,Meryton Ball,0.55,social
+Elizabeth,Stay at Netherfield,0.21,social
+Jane,Stay at Netherfield,0.05,social
+Darcy,Stay at Netherfield,0.24,social
+Bingley,Stay at Netherfield,0.08,social
+Elizabeth,Netherfield Ball,0.24,social
+Jane,Netherfield Ball,0.48,social
+Darcy,Netherfield Ball,0.13,social
+Bingley,Netherfield Ball,0.4,social
+Elizabeth,Mr. Collins' Proposal,0.4,confrontation
+Elizabeth,See Mr. Darcy in Kent,0.5,romantic
+Jane,See Mr. Darcy in Kent,-0.36,romantic
+Darcy,See Mr. Darcy in Kent,0.71,romantic
+Bingley,See Mr. Darcy in Kent,0.24,romantic
+Elizabeth,Mr. Darcy's Proposal,0.34,romantic
+Jane,Mr. Darcy's Proposal,0.49,romantic
+Darcy,Mr. Darcy's Proposal,0.05,romantic
+Elizabeth,Mr. Darcy's Letter,0.44,confrontation
+Darcy,Mr. Darcy's Letter,0.02,confrontation
+Bingley,Mr. Darcy's Letter,0.25,confrontation
+Elizabeth,A Visit to Derbyshire,0.32,romantic
+Darcy,A Visit to Derbyshire,0.33,romantic
+Bingley,A Visit to Derbyshire,-0.03,romantic
+Elizabeth,Lydia's Run Away,0.13,confrontation
+Jane,Lydia's Run Away,0.01,confrontation
+Darcy,Lydia's Run Away,-0.05,confrontation
+Elizabeth,Finds Out That Mr. Darcy Saved Lydia,0.24,romantic
+Jane,Finds Out That Mr. Darcy Saved Lydia,-0.05,romantic
+Darcy,Finds Out That Mr. Darcy Saved Lydia,0.15,romantic
+Elizabeth,Mr. Bingley's Proposal,0.42,romantic
+Jane,Mr. Bingley's Proposal,0.45,romantic
+Darcy,Mr. Bingley's Proposal,0.72,romantic
+Bingley,Mr. Bingley's Proposal,0.35,romantic
+Elizabeth,Lady Catherine Visits,-0.02,confrontation
+Jane,Lady Catherine Visits,0.46,confrontation
+Darcy,Lady Catherine Visits,0.16,confrontation
+Bingley,Lady Catherine Visits,0.14,confrontation
+Elizabeth,A New Declaration of Love,0.34,romantic
+Jane,A New Declaration of Love,-0.2,romantic
+Darcy,A New Declaration of Love,0.28,romantic
+Bingley,A New Declaration of Love,0.15,romantic
