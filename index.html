@@ -7,7 +7,7 @@
   <style>
     html {
       padding: 0px;
-      margin: 0px 10%;
+      margin: 0px 15%;
       background-color: rgb(235, 232, 226);
       font-family: monospace;
       text-align: center;
@@ -67,14 +67,19 @@
 <body>
   <h1>Pride and Prejudice: A Sentiment Analysis</h1>
 
-  <h2>Sentiment by Chapter</h2>
+  <h2>Overall Sentiment by Chapter</h2>
 
-  <p>Welcome to our project on analyzing the sentiment and emotional trajectory of "Pride and Prejudice." Through
-    visualizing
-    sentiment scores for each chapter, our aim is to uncover patterns and trends in emotions as the story unfolds. By
-    delving into the characters' journeys and the book's overall tone, readers will gain deeper insights into this
-    beloved
-    classic.
+  <p>Welcome to our project on analyzing the sentiment and emotional trajectory
+    of <i>Pride and Prejudice</i>. Through visualizing the strength of emotions
+    for each chapter, we aim to uncover patterns and trends in mood as the story
+    unfolds. Delve into this beloved classic by exploring each chapter.
+  </p>
+  <p>
+    Overall, the book is relatively stable in mood, with sentiment scores at most
+    around 0.5. This matches with the perspective of a narrator having their own
+    storytelling style that stays within certain constraints. However, within
+    these constraints, Jane Austen's characters experience a myriad of highs and
+    lows, reflected in the chart below.
   </p>
 
   <div id="sentiment"></div>
@@ -82,11 +87,19 @@
   <h2>Character Relationships</h2>
 
   <p>
-    Explore our interactive visualizations for "Pride and Prejudice" to understand the book's mood and character
-    network.
-    Hover over the chart borders to reveal character relationships. Perfect for new readers to familiarize themselves
-    with
-    the story before diving in
+    Below we visualize the relationship network for eight important characters -
+    hover over the chart borders to reveal character relationships. Whether you
+    are a new reader or an avid fan, use this diagram to (re)familiarize yourself
+    with the story!
+  </p>
+  <p>
+    We can clearly identify Elizabeth as the focus of the novel, as she takes up
+    the biggest section of the circle and has a decent-sized connection to every
+    other character in the network. The diagram also reveals some interesting
+    character dynamics. For instance, Mr. Darcy's interactions with his aunt, Lady
+    Catherine, are minimal compared to interactions with Elizabeth and Mr. Bingley,
+    which might in part reflect their disagreement on certain topics (i.e., marriage)
+    despite being close relatives.
   </p>
 
   <div id="char-relations">
@@ -97,10 +110,18 @@
   <h2>Intensity of Character Emotions Over Time</h2>
 
   <p>
-    Discover the emotional journey of characters in "Pride and Prejudice" through our interactive chart, tracking their
-    changing emotions over time under different conditions. We use these visualizations
-    as a baseline to compare and contrast emotional trajectories. Gain insights into similarities and differences across
-    books for a deeper understanding of their stories.
+    In this chart we further detail the sentiment intensity of the four main
+    characters - Elizabeth, Darcy, Bingley, and Jane - at specific important
+    plot points. Track their emotional journeys over time or filter to see how
+    sentiments change for different types of events.
+  </p>
+  <p>
+    Exploring the chart, we might notice that Elizabeth and Mr. Darcy follow a
+    relatively similar trajectory, starting a bit lower with the Meryton Ball and
+    going higher at two points: when they see each other in Kent and when Mr. Bingley
+    proposes to Jane. Mr. Bingley has the highest intensity score at the beginning
+    of the novel and maintains a mostly positive trend throughout, while Jane
+    seems to have more mood swings.
   </p>
 
   <div id="dropdown-div">
