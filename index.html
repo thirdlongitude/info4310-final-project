@@ -51,6 +51,16 @@
     #combined-bubble .legend text {
       font-size: larger;
     }
+
+    #dropdown-div {
+      display: flex;
+      justify-content: center;
+    }
+
+    #dropdown-div select {
+      padding: 5px;
+      margin: 5px;
+    }
   </style>
 </head>
 
@@ -93,12 +103,21 @@
     books for a deeper understanding of their stories.
   </p>
 
-  <select id="eventType">
-    <option value="all">All Events</option>
-    <option value="social">Social Gatherings</option>
-    <option value="confrontation">Confrontations</option>
-    <option value="romantic">Romantic Moments</option>
-  </select>
+  <div id="dropdown-div">
+    <select id="eventType">
+      <option value="all">All Events</option>
+      <option value="social">Social Gatherings</option>
+      <option value="confrontation">Confrontations</option>
+      <option value="romantic">Romantic Moments</option>
+    </select>
+    <select id="charChosen">
+      <option value="all">All Characters</option>
+      <option value="Elizabeth">Elizabeth</option>
+      <option value="Darcy">Darcy</option>
+      <option value="Jane">Jane</option>
+      <option value="Bingley">Bingley</option>
+    </select>
+  </div>
 
   <div id="combined-bubble"></div>
 
@@ -194,6 +213,7 @@
       .attr("class", "tooltip");
 
     const bubble_eventTypeDropdown = d3.select("#eventType");
+    const bubble_charDropdown = d3.select("#charChosen");
 
     const bubble_characters = ["Elizabeth", "Darcy", "Jane", "Bingley"];
 
@@ -530,20 +550,27 @@
         .style("text-anchor", "end")
         .text(function (d) { return d; });
 
-      bubble_eventTypeDropdown.on("change", function () {
-        const bubble_selectedEventType = this.value;
+      function updateDropdown() {
+        let bubble_selected_event_type = bubble_eventTypeDropdown.property("value");
+        let bubble_selected_char = bubble_charDropdown.property("value");
 
         bubble_svg.selectAll(".circle")
           .style("display", function (d) {
-            // show all bubbles if the selected event type is 'all'
-            if (bubble_selectedEventType === "all") {
+            // show all bubbles if selected event type or character is 'all'
+            if (bubble_selected_event_type === "all" && bubble_selected_char === "all") {
               return "block";
+            } else if (bubble_selected_event_type === "all") {
+              return d.character === bubble_selected_char ? "block" : "none";
+            } else if (bubble_selected_char === "all") {
+              return d.event_type === bubble_selected_event_type ? "block" : "none";
+            } else {
+              return (d.character === bubble_selected_char && d.event_type === bubble_selected_event_type) ? "block" : "none";
             }
-
-            // show only the bubbles with the same event type as the selected one
-            return d.event_type === bubble_selectedEventType ? "block" : "none";
           });
-      });
+      }
+
+      bubble_eventTypeDropdown.on("change", updateDropdown);
+      bubble_charDropdown.on("change", updateDropdown);
       // ----- end bubble chart -----
     }
     requestData();
