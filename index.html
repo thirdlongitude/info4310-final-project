@@ -72,7 +72,8 @@
   <p>Welcome to our project on analyzing the sentiment and emotional trajectory
     of <i>Pride and Prejudice</i>. Through visualizing the strength of emotions
     for each chapter, we aim to uncover patterns and trends in mood as the story
-    unfolds. Delve into this beloved classic by exploring each chapter.
+    unfolds. Delve into this beloved classic by exploring each chapter's sentiment
+    score.
   </p>
   <p>
     Overall, the book is relatively stable in mood, with sentiment scores at most
@@ -350,6 +351,7 @@
       // ----- end line chart -----
 
       // ----- start chord diagram -----
+      // credit to Prof. Jeff Rzeszotarski for the code structure of the chord diagram
       const chord_colors = ['#8294C4', '#f79b94', '#c2955b', '#19A7CE',
         '#369635', '#7dd463', '#ccc64e', 'grey'];
       let chord_nodes = char_relations.nodes;
