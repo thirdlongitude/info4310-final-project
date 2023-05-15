@@ -44,6 +44,13 @@
     #sentiment .legend rect {
       border: solid;
     }
+
+    #sentiment .tick text,
+    #chord .segment text,
+    #combined-bubble .tick text,
+    #combined-bubble .legend text {
+      font-size: larger;
+    }
   </style>
 </head>
 
@@ -52,10 +59,12 @@
 
   <h2>Sentiment by Chapter</h2>
 
-  <p>Welcome to our project on analyzing the sentiment and emotional trajectory of "Pride and Prejudice." Through visualizing
-  sentiment scores for each chapter, our aim is to uncover patterns and trends in emotions as the story unfolds. By
-  delving into the characters' journeys and the book's overall tone, readers will gain deeper insights into this beloved
-  classic. 
+  <p>Welcome to our project on analyzing the sentiment and emotional trajectory of "Pride and Prejudice." Through
+    visualizing
+    sentiment scores for each chapter, our aim is to uncover patterns and trends in emotions as the story unfolds. By
+    delving into the characters' journeys and the book's overall tone, readers will gain deeper insights into this
+    beloved
+    classic.
   </p>
 
   <div id="sentiment"></div>
@@ -63,8 +72,10 @@
   <h2>Character Relationships</h2>
 
   <p>
-    Explore our interactive visualizations for "Pride and Prejudice" to understand the book's mood and character network.
-    Hover over the chart borders to reveal character relationships. Perfect for new readers to familiarize themselves with
+    Explore our interactive visualizations for "Pride and Prejudice" to understand the book's mood and character
+    network.
+    Hover over the chart borders to reveal character relationships. Perfect for new readers to familiarize themselves
+    with
     the story before diving in
   </p>
 
@@ -465,10 +476,10 @@
           return i % 2 === 0 ? 10 : -40;
         }) // Adjust vertical position of the text
         .attr("x", 0)
-        .attr("dy", ".35em")
+        .attr("dy", ".55em")
         .attr("transform", "rotate(0)")
         .style("text-anchor", "middle")
-        .call(wrap, 50);
+        .call(wrap, 60);
 
       bubble_svg.append("g").attr("class", "y axis").call(bubble_yAxis);
 
